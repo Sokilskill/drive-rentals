@@ -6,8 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectDataList,
   selectGetLimit,
+  selectIsLoading,
   selectPageNumber,
   selectSelectedMake,
+  selectSelectedPrice,
   selectShowLoadMore,
 } from '../../redux/advert/selectors';
 import { fetchAdverts } from '../../redux/advert/operations';
@@ -16,7 +18,9 @@ import {
   clearDataList,
   incrementPage,
   setSelectedMake,
+  setSelectedPrice,
 } from '../../redux/advert/advertsSlice';
+import { Loader } from '../../components/Loader/Loader';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -24,42 +28,39 @@ const CatalogPage = () => {
   const showBtn = useSelector(selectShowLoadMore);
 
   const make = useSelector(selectSelectedMake);
+  const rentalPrice = useSelector(selectSelectedPrice);
   const page = useSelector(selectPageNumber);
   const limit = useSelector(selectGetLimit);
-
-  const [selectedPrice, setSelectedPrice] = useState('To $');
+  const isLoading = useSelector(selectIsLoading);
+  const [selectedMake, setSelectedMakeLocal] = useState(make);
+  const [selectedPrice, setSelectedPriceLocal] = useState(rentalPrice);
 
   const isData = data.length !== 0;
 
   useEffect(() => {
-    if (make === '') {
+    if (page < 2) {
       dispatch(clearDataList());
-      dispatch(fetchAdverts({ page: 1, limit }));
     }
-  }, []);
+    dispatch(fetchAdverts({ page, limit, make, rentalPrice }));
+  }, [dispatch, limit, make, page, rentalPrice]);
 
-  useEffect(() => {
-    if (page > 1) {
-      dispatch(fetchAdverts({ page, make, limit }));
-    }
-  }, [dispatch, page]);
-
-  // LoadMore
   const pageIncrement = () => {
     dispatch(incrementPage());
   };
 
   const handleMakeSelectChange = (event) => {
-    dispatch(setSelectedMake(event.target.value));
+    setSelectedMakeLocal(event.target.value);
   };
   const handlePriceSelectChange = (event) => {
-    setSelectedPrice(event.target.value);
+    setSelectedPriceLocal(event.target.value);
   };
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
     dispatch(clearDataList());
-    dispatch(fetchAdverts({ page: 1, make, limit }));
+    // dispatch(fetchAdverts({ page: 1, make, rentalPrice: '', limit }));
+    dispatch(setSelectedMake(selectedMake === 'All' ? '' : selectedMake));
+    dispatch(setSelectedPrice(selectedPrice === 'All' ? '' : selectedPrice));
   };
 
   return (
@@ -69,12 +70,29 @@ const CatalogPage = () => {
           handleMakeSelectChange={handleMakeSelectChange}
           handlePriceSelectChange={handlePriceSelectChange}
           handleOnSubmit={handleOnSubmit}
-          selectedMake={make}
+          selectedMake={selectedMake}
           selectedPrice={selectedPrice}
         />
       </WrapperFilter>
-      <WrapperList>{isData && <AdvertsList dataList={data} />}</WrapperList>
-      {showBtn && <LoadMore handlerBtn={pageIncrement} />}
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {isData ? (
+            <>
+              <WrapperList>
+                <AdvertsList dataList={data} />
+              </WrapperList>
+              {showBtn && isData && <LoadMore handlerBtn={pageIncrement} />}
+            </>
+          ) : (
+            <h1 style={{ margin: '0 auto', fontSize: '40px' }}>
+              {`Sorry, but I couldn't find anything based on your request. Please try something else.`}
+            </h1>
+          )}
+        </>
+      )}
     </Container>
   );
 };
