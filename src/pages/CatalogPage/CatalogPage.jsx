@@ -21,6 +21,8 @@ import {
   setSelectedPrice,
 } from '../../redux/advert/advertsSlice';
 import { Loader } from '../../components/Loader/Loader';
+import prices from '../../data/prices.json';
+import makes from '../../data/makes.json';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -72,6 +74,8 @@ const CatalogPage = () => {
           handleOnSubmit={handleOnSubmit}
           selectedMake={selectedMake}
           selectedPrice={selectedPrice}
+          makes={makes}
+          prices={prices}
         />
       </WrapperFilter>
 

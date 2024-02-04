@@ -6,8 +6,6 @@ import {
   Select,
   SelectPrice,
 } from './Filter.styled';
-import prices from '../../data/prices.json';
-import makes from '../../data/makes.json';
 
 const Filter = ({
   handleMakeSelectChange,
@@ -15,6 +13,8 @@ const Filter = ({
   handleOnSubmit,
   selectedMake,
   selectedPrice,
+  makes,
+  prices,
 }) => {
   return (
     <Form onSubmit={handleOnSubmit}>
