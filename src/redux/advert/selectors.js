@@ -8,6 +8,8 @@ export const selectError = ({ adverts }) => adverts.error;
 const selectPrevDataListLength = ({ adverts }) => adverts.prevDataListLength;
 export const selectGetLimit = (state) => state.adverts.limit;
 
+export const selectSelectedPrice = (state) => state.adverts.selectedPrice;
+
 export const selectSelectedMake = ({ adverts }) => {
   if (adverts.selectedMake === 'All') {
     return '';
