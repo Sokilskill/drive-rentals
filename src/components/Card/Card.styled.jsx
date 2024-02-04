@@ -1,28 +1,20 @@
 import styled from '@emotion/styled';
 
-export const CardContainer = styled.div`
-  // width: 460px;
-  // height: 100%;
-`;
-
 export const WrapperImage = styled.div`
   position: relative;
   width: 100%;
-  overflow: hidden;
   height: 248px;
-  border-radius: 14px;
 
   &.large {
     height: 270px;
   }
 
-  img {
+  & > img {
     display: block;
+    border-radius: 14px;
+    object-fit: cover;
     width: 100%;
     height: 100%;
-
-    object-fit: cover;
-    object-position: center;
   }
 `;
 
@@ -45,10 +37,10 @@ export const WrapperTitle = styled.div`
   line-height: 1.5;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h2`
   font-weight: 500;
   margin-bottom: 8px;
-  white-space: nowrap;
+  // white-space: nowrap;
 
   font-size: 16px;
   line-height: 1.5;
@@ -61,6 +53,7 @@ export const Title = styled.h3`
 
 export const WrapperDescription = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 4px;
 
@@ -74,10 +67,7 @@ export const Description = styled.p`
   font-size: 12px;
   line-height: 1.5;
   text-align: start;
-
-  overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
 
   &:not(:last-child) {
     padding-right: 6px;
