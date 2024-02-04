@@ -13,11 +13,6 @@ export const Title = styled.h1`
   font-size: 28px;
   margin-bottom: 10px;
 `;
-export const StyledImage = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-`;
 
 export const Advertisement = styled.section`
   border-radius: 10px;
