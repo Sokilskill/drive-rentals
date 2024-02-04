@@ -4,6 +4,8 @@ Drive Rentals is a web application that allows users to browse and book rental
 cars. The application is designed for the convenience of users who are looking
 for cars for temporary use.
 
+![Home page](/public/readme.png)
+
 ## Key Features
 
 - **Browse Car List:** Explore various cars presented in the application.
@@ -20,8 +22,6 @@ for cars for temporary use.
   application state.
 
 - **Backend:** Car data and rental conditions are obtained from mockAPI.
-
-- **Database:** Utilizes [database name] to store data about cars and users.
 
 ## Installation and Running
 
