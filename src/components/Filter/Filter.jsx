@@ -1,45 +1,14 @@
-import { Button, Form, Label, Select, SelectPrice } from './Filter.styled';
+import {
+  Button,
+  Form,
+  Input,
+  Label,
+  Select,
+  SelectPrice,
+} from './Filter.styled';
+import prices from '../../data/prices.json';
+import makes from '../../data/makes.json';
 
-const prices = [
-  '30',
-  '40',
-  '50',
-  '60',
-  '70',
-  '80',
-  '90',
-  '100',
-  '110',
-  '120',
-  '130',
-  '140',
-  '150',
-];
-const makes = [
-  'All',
-  'Buick',
-  'Volvo',
-  'HUMMER',
-  'Subaru',
-  'Mitsubishi',
-  'Nissan',
-  'Lincoln',
-  'GMC',
-  'Hyundai',
-  'MINI',
-  'Bentley',
-  'Mercedes-Benz',
-  'Aston Martin',
-  'Pontiac',
-  'Lamborghini',
-  'Audi',
-  'BMW',
-  'Chevrolet',
-  'Mercedes-Benz',
-  'Chrysler',
-  'Kia',
-  'Land',
-];
 const Filter = ({
   handleMakeSelectChange,
   handlePriceSelectChange,
@@ -73,7 +42,7 @@ const Filter = ({
           value={selectedPrice}
           onChange={handlePriceSelectChange}
         >
-          <option value="To $" disabled>
+          <option value="" disabled hidden>
             To $
           </option>
           {prices.map((price, index) => (
@@ -82,6 +51,14 @@ const Filter = ({
             </option>
           ))}
         </SelectPrice>
+      </Label>
+
+      <Label>
+        Car mileage / km
+        <Input placeholder="From" />
+      </Label>
+      <Label>
+        <Input placeholder="To" />
       </Label>
 
       <Button type="submit">Search</Button>
