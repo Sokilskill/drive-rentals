@@ -69,6 +69,7 @@ export const Card = ({ data, modal }) => {
     rentalConditionsArray[0],
     spliterForMinimalAge
   );
+
   const [showModal, setShowModal] = useState(false);
 
   const onToggleModal = () => {
@@ -163,7 +164,7 @@ export const Card = ({ data, modal }) => {
               </RentalItem>
               <RentalItem>
                 <RentalInfo>
-                  Mileage:&nbsp;<span>{mileage}</span>
+                  Mileage: <span>{mileage.toLocaleString('en-US')}</span>
                 </RentalInfo>
               </RentalItem>
               <RentalItem>
