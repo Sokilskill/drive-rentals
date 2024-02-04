@@ -16,6 +16,28 @@ for cars for temporary use.
 - **Rental Booking:** Place rental orders for cars directly from the
   application.
 
+# Car Listings Filter
+
+This filter allows for convenient selection of cars based on brand, hourly
+price, and mileage in miles. You can also choose "All" to display the entire
+list of this category.
+
+## Features
+
+- **Form State Persistence:** The form automatically saves entered data even
+  when navigating to other pages and returning.
+
+- **Convenient Filter Display:** For a better understanding of the applied
+  filter.
+
+- **Load More:** The "Load More" button adds new listings. If there is no more
+  data on the server, the button is hidden.
+
+## Usage
+
+1. Choose the car brand, hourly price, and mileage.
+2. Press the "Load More" button to add new listings.
+
 ## Technical Details
 
 - **Frontend:** Implemented in React with the use of Redux for managing the
