@@ -9,6 +9,7 @@ const initialState = {
   prevDataListLength: 12,
   page: 1,
   selectedMake: '',
+  selectedPrice: '',
 };
 
 const advertSlice = createSlice({
@@ -21,6 +22,9 @@ const advertSlice = createSlice({
 
     setSelectedMake(state, action) {
       state.selectedMake = action.payload;
+    },
+    setSelectedPrice(state, action) {
+      state.selectedPrice = action.payload;
     },
     clearDataList(state) {
       (state.data = []), (state.prevDataListLength = 12), (state.page = 1);
@@ -43,8 +47,12 @@ const advertSlice = createSlice({
       }),
 });
 
-export const { clearDataList, setSelectedMake, incrementPage } =
-  advertSlice.actions;
+export const {
+  clearDataList,
+  setSelectedMake,
+  incrementPage,
+  setSelectedPrice,
+} = advertSlice.actions;
 
 const advertReducer = advertSlice.reducer;
 export default advertReducer;
