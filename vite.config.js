@@ -12,5 +12,8 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
+  server: {
+    historyApiFallback: true,
+  },
   base: '/drive-rentals/',
 });
