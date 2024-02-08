@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "favicon",
+  "short_name": "fav",
   "icons": [
     {
       "src": "/public/favicon/android-chrome-192x192.png",
