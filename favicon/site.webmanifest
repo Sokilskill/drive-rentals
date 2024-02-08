@@ -1,6 +1,7 @@
 {
   "name": "favicon",
   "short_name": "fav",
+  "start_url": "/drive-rentals/",
   "icons": [
     {
       "src": "/public/favicon/android-chrome-192x192.png",
